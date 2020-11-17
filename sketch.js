@@ -1,39 +1,36 @@
-var obj1, obj2;
+var ball1,ball2;
 
 function setup(){
   createCanvas(600,600);
 
-  obj1 = createSprite(300,300,100,50);
-  obj2 =  createSprite(100,100,50,50);
+  ball1 = createSprite(300,300,100,50);
+  ball2 =  createSprite(100,100,50,50);
 
-  obj1.debug = true;
-  obj2.debug = true;
+  ball1.debug = true;
+  ball2.debug = true;
 
-  obj1.shapeColor = "red";
-  obj2.shapeColor = "blue";
+  ball1.shapeColor = "red";
+  ball2.shapeColor = "blue";
 
 }
 
 function draw(){
   background(0);
 
-  obj2.x = mouseX;
-  obj2.y = mouseY;
+  ball2.x = mouseX;
+  ball2.y = mouseY;
 
-  if(obj1.x - obj2.x <= obj1.width/2 + obj2.width/2
-    && obj2.x - obj1.x <= obj1.width/2 + obj2.width/2
-    && obj1.y - obj2.y <= obj1.height/2 + obj2.height/2
-    && obj2.y - obj1.y <= obj1.height/2 + obj2.height/2 ){
+ if(touch(ball1,ball2)){
+   ball1.shapeColor ="yellow";
+   ball2.shapeColor ="yellow";
+ }
+ else{
+ ball1.shapeColor = "red";
+  ball2.shapeColor = "blue";
 
-    obj1.shapeColor = "pink";
-    obj2.shapeColor = "pink";
-  }
-
-  else{
-    obj1.shapeColor = "red";
-    obj2.shapeColor = "blue";
-  }
+ }
 
   drawSprites();
 }
+
 
